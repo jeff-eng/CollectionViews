@@ -38,7 +38,7 @@ class CollectionViewController: UICollectionViewController {
         label.text = array[indexPath.row]
         
         let button = cell.viewWithTag(2) as! UIButton
-        button.titleLabel?.text = buttonArray[indexPath.row]
+        button.setTitle(buttonArray[indexPath.row], forState: UIControlState.Normal)
         
         return cell
     }
