@@ -9,9 +9,13 @@
 import UIKit
 import Photos
 
-class ViewController: UICollectionViewController {
+class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var imageArray = [UIImage]()
+    
+    override func viewDidLoad() {
+        retrievePhotos()
+    }
     
     func retrievePhotos() {
         
@@ -38,6 +42,8 @@ class ViewController: UICollectionViewController {
                 }
             } else {
                 print("There are no photos available.")
+                // Calling reloadData method restarts the scene and reloads the data
+                self.collectionView?.reloadData()
             }
         }
     }
@@ -55,6 +61,22 @@ class ViewController: UICollectionViewController {
         imageView.image = imageArray[indexPath.row]
         
         return cell
+    }
+    
+    // This method sets the size of the cell to three-wide across
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        let width = collectionView.frame.width / 3
+        
+        return CGSize(width: width, height: width)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 1.0
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 1.0
     }
 }
 
