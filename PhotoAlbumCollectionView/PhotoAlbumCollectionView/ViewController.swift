@@ -66,7 +66,7 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     // This method sets the size of the cell to three-wide across
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        let width = collectionView.frame.width / 3
+        let width = collectionView.frame.width / 4 - 1
         
         return CGSize(width: width, height: width)
     }
